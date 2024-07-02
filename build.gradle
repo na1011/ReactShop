@@ -1,0 +1,70 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.3.1'
+    id 'io.spring.dependency-management' version '1.1.5'
+}
+
+group = 'com'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+// buildReact Task: npm install과 npm run build 명령을 실행하여 리액트 프로젝트를 빌드해.
+tasks.register('buildReact', Exec) {
+    workingDir 'src/main/front'
+    commandLine 'cmd', '/c', 'npm install && npm run build'
+
+    doLast {
+        println '리액트 빌드 완료'
+    }
+}
+
+// copyReactBuild Task: buildReact Task가 완료된 후 빌드된 파일들을 src/main/resources/static 디렉토리로 복사해.
+tasks.register('copyReactBuild', Copy) {
+    dependsOn tasks.named('buildReact')
+    from('src/main/front/build') {
+        include '**/*'
+    }
+    into 'src/main/resources/static'
+
+    doLast {
+        println '리액트 빌드 파일 복사 완료'
+    }
+}
+
+// processResources Task가 copyReactBuild Task에 의존하도록 설정
+tasks.named('processResources') {
+    dependsOn tasks.named('copyReactBuild')
+}
+
+// build Task 의존성 설정: build Task가 copyReactBuild Task에 의존하도록 설정해.
+// 따라서 전체 빌드 프로세스 중에 리액트 프로젝트가 빌드되고 복사될 거야.
+tasks.build {
+    dependsOn tasks.named('copyReactBuild')
+}
