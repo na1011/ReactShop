@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 @Repository
 public class ItemRepository {
@@ -26,8 +27,8 @@ public class ItemRepository {
         store.put(item.getId(), item);
     }
 
-    public ItemVO findById(Long itemId) {
-        return store.get(itemId);
+    public Optional<ItemVO> findById(Long itemId) {
+        return Optional.ofNullable(store.get(itemId));
     }
 
     public void order(ItemVO item) {

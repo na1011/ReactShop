@@ -1,12 +1,11 @@
 import './assets/styles/App.css';
 import NavMenu from "./components/NavMenu";
 import mainBgImg from "./assets/imgs/bg.png";
-import React, {useEffect, useState} from "react";
-import ItemList from "./components/ItemList";
-import axios from "axios";
 import {Route, Routes} from "react-router-dom";
-import ItemDetail from "./components/ItemDetail";
-import Attendance from "./components/Attendance";
+import ItemList from "./routes/ItemList";
+import ItemDetail from "./routes/ItemDetail";
+import Attendance from "./routes/Attendance";
+import Cart from "./routes/Cart";
 
 function App() {
     return (
@@ -17,6 +16,7 @@ function App() {
                 <Route path={"/"} element={<ItemList />}/>
                 <Route path={"/detail/:itemId"} element={<ItemDetail/>}/>
                 <Route path={"/attendance"} element={<Attendance/>} />
+                <Route path={"/cart"} element={<Cart />} />
             </Routes>
         </div>
     );

@@ -1,5 +1,5 @@
 import React, {useReducer, useRef} from 'react';
-import StudentList from "./StudentList";
+import StudentList from "../components/StudentList";
 
 function Attendance(props) {
 

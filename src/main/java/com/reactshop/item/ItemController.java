@@ -8,6 +8,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -21,8 +22,13 @@ public class ItemController {
     }
 
     @GetMapping("/details/{itemId}")
-    public ResponseEntity<ItemVO> itemDetail(@PathVariable("itemId") Long itemID) {
-        return new ResponseEntity<>(itemRepository.findById(itemID), HttpStatus.OK);
+    public ResponseEntity<?> itemDetail(@PathVariable("itemId") Long itemID) {
+        Optional<ItemVO> item = itemRepository.findById(itemID);
+        if (item.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Item not found");
+        }
+
+        return new ResponseEntity<>(item, HttpStatus.OK);
     }
 
     @PostMapping("/detail/{itemId}/order")

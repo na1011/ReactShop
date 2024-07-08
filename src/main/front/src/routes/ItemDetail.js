@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
 import axios from "axios";
-import OrderAlert from "./OrderAlert";
-import ItemDetailTab from "./ItemDetailTab";
+import ItemDetailTab from "../components/ItemDetailTab";
+import OrderAlert from "../components/OrderAlert";
 
 function ItemDetail() {
 
@@ -33,6 +33,16 @@ function ItemDetail() {
         }
     }, [itemId]);
 
+    const addCart = () => {
+        axios.post(`/api/${itemId}/addCart`)
+            .then(response => {
+                alert('장바구니에 정상적으로 추가되었습니다.');
+            })
+            .catch(error => {
+                alert(error.message);
+            })
+    }
+
     if (error && item == null) {
         return (<div>Error : {error}</div>);
     }
@@ -55,7 +65,7 @@ function ItemDetail() {
                     <p>수량 : <input type={"text"}
                                    className={"form-control"}
                                    name={"quantity"}/></p>
-                    <button className="btn btn-danger" type={"submit"}>주문하기</button>
+                    <button className="btn btn-danger" onClick={addCart}>장바구니 넣기</button>
                 </div>
             </form>
             <ItemDetailTab />
