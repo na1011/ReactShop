@@ -1,15 +1,21 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
 import axios from "axios";
+import OrderAlert from "./OrderAlert";
+import ItemDetailTab from "./ItemDetailTab";
 
 function ItemDetail() {
+
+    console.log('ItemDetail 컴포넌트 렌더링');
 
     const {itemId} = useParams();
     const [item, setItem] = useState(null);
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        axios.get(`/detail/${itemId}`)
+        const cancelTokenSource = axios.CancelToken.source();
+
+        axios.get(`/details/${itemId}`)
             .then(response => {
                 setItem(response.data);
             })
@@ -20,8 +26,12 @@ function ItemDetail() {
                 };
                 setItem(tempItem);
                 setError(error.message);
-            })
-    }, []);
+            });
+        return () => {
+            console.log('axios 클리어 함수 실행');
+            cancelTokenSource.cancel();
+        }
+    }, [itemId]);
 
     if (error && item == null) {
         return (<div>Error : {error}</div>);
@@ -33,7 +43,8 @@ function ItemDetail() {
 
     return (
         <div className="container">
-            <div className="row">
+            <OrderAlert/>
+            <form className="row">
                 <div className="col-md-6">
                     <img src={`https://codingapple1.github.io/shop/${item.img}.jpg`} width="100%"/>
                 </div>
@@ -41,9 +52,13 @@ function ItemDetail() {
                     <h4 className="pt-5">{item.title}</h4>
                     <p>{item.content}</p>
                     <p>{item.price}</p>
-                    <button className="btn btn-danger">주문하기</button>
+                    <p>수량 : <input type={"text"}
+                                   className={"form-control"}
+                                   name={"quantity"}/></p>
+                    <button className="btn btn-danger" type={"submit"}>주문하기</button>
                 </div>
-            </div>
+            </form>
+            <ItemDetailTab />
         </div>
     );
 }

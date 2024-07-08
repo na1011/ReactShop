@@ -1,0 +1,4 @@
+.itemTitle:hover {
+    font-weight: bold; /* 제목을 굵게 */
+    text-decoration: underline; /* 밑줄 표시 */
+}
