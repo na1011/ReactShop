@@ -3,9 +3,9 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import ItemDetailTab from '../components/ItemDetailTab';
 import OrderAlert from '../components/OrderAlert';
-import { Item } from '../types/myType';
+import { CartList, Item } from '../types/myType';
 import { useRecoilState } from 'recoil';
-import { tempItemList } from '../atoms/cartState';
+import { cartState, tempItemList } from '../atoms/cartState';
 
 const ItemDetail: React.FC = () => {
     console.log('ItemDetail 컴포넌트 렌더링');
@@ -16,6 +16,7 @@ const ItemDetail: React.FC = () => {
 
     // 스프링부트 미실행 시 recoil 에 있는 전역상태 호출
     const [tempItem] = useRecoilState<Item[]>(tempItemList);
+    const [tempCart, setTempCart] = useRecoilState<CartList>(cartState);
 
     useEffect(() => {
         const cancelTokenSource = axios.CancelToken.source();
@@ -49,7 +50,26 @@ const ItemDetail: React.FC = () => {
             .catch((responseError) => {
                 alert(responseError.message);
                 if (!item) return;
-
+                if (tempCart.cartList.find((cartItem) => cartItem.item.id === item.id)) {
+                    console.log('이미 존재하는 아이템이지롱~', tempCart.cartList);
+                    setTempCart({
+                        ...tempCart,
+                        cartList: tempCart.cartList.map((cartItem) =>
+                            cartItem.item.id === item.id
+                                ? {
+                                      ...cartItem,
+                                      quantity: cartItem.quantity + 1,
+                                  }
+                                : cartItem,
+                        ),
+                    });
+                } else {
+                    console.log('새로운 아이템 추가요~', tempCart.cartList);
+                    setTempCart({
+                        ...tempCart,
+                        cartList: [...tempCart.cartList, { quantity: 1, item: item }],
+                    });
+                }
             });
     };
 

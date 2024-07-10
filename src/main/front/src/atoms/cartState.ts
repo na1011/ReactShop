@@ -1,5 +1,5 @@
 import { atom, selector } from 'recoil';
-import { CartList, Item } from '../types/myType';
+import { CartItem, CartList, Item } from '../types/myType';
 
 // 스프링부트 미실행 시 recoil 을 통해 전역으로 삽입할 Item 리스트
 const tempItems: Item[] = [
@@ -26,6 +26,11 @@ const tempItems: Item[] = [
     },
 ];
 
+const tempCartItem: CartItem = {
+    quantity: 2,
+    item: tempItems[2],
+};
+
 // Atom : 상태를 나타내는 기본 단위
 export const tempItemList = atom<Item[]>({
     key: 'tempItemList', // 고유키
@@ -36,7 +41,7 @@ export const cartState = atom<CartList>({
     key: 'cartState',
     default: {
         user: 12345,
-        cartList: [],
+        cartList: [tempCartItem],
     },
 });
 
@@ -51,5 +56,3 @@ export const cartTotalSelector = selector<number>({
         );
     },
 });
-
-
