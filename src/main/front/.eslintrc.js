@@ -1,23 +1,17 @@
 module.exports = {
-    // [env] 프로젝트 환경 설정, 브라우저 환경과 ES2021 문법 사용
-    env: {
-        browser: true,
-        es2021: true,
-    },
-    // [parser] typescript를 parser로 사용하도록 함
+    // [parser] typescript 를 parser 로 사용하도록 함
     parser: '@typescript-eslint/parser',
     // [plugins] 사용할 eslint 플러그인 설정
-    plugins: ['@typescript-eslint', 'prettier'],
-    // [extends] 프로젝트에 적용할 eslit 규칙셋
+    plugins: ['@typescript-eslint', 'react', 'react-hooks'],
+    // [extends] 프로젝트에 적용할 eslint 규칙셋
     extends: [
-        'airbnb',
-        'airbnb/hooks',
-        'airbnb-typescript',
+        'eslint:recommended',
+        'plugin:react/recommended',
         'plugin:import/errors',
         'plugin:import/warnings',
-        'plugin:prettier/recommended',
         'plugin:@typescript-eslint/recommended',
-        'prettier',
+        'prettier', // eslint-config-prettier를 추가하여 Prettier와 충돌하는 ESLint 규칙을 비활성화
+        'plugin:prettier/recommended', // eslint-plugin-prettier를 추가하여 Prettier 오류를 ESLint 오류로 표시
     ],
     parserOptions: {
         project: './tsconfig.json',
@@ -27,15 +21,15 @@ module.exports = {
         // var 금지
         'no-var': 'warn',
         // 일치 연산자 사용 필수
-        eqeqeq: 'warn',
+        'eqeqeq': 'warn',
         // 컴포넌트의 props 검사 비활성화, propstype 사용하지 않아도 경고 띄우지 않음
         'react/prop-types': 0,
         // 불필요한 세미콜론 사용 시 에러 표시
         'no-extra-semi': 'error',
         // jsx 파일 확장자 .jx, .jsx, .ts, .tsx 허용
         'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
-        // 화살표 함수의 파라미터가 하나일때 괄호 생략
-        'arrow-parens': ['warn', 'as-needed'],
+        // // 화살표 함수의 파라미터가 하나일때 괄호 생략
+        // 'arrow-parens': ['warn', 'as-needed'],
         // 사용하지 않는 변수가 있을 때 발생하는 경고 비활성화
         'no-unused-vars': ['off'],
         // 콘솔 사용 시 발생하는 경고 비활성화
@@ -51,7 +45,7 @@ module.exports = {
         // 디버그 허용
         'no-debugger': 'off',
         // [error] Delete `␍` prettier/prettier
-        'prettier/prettier': ['error', { endOfLine: 'auto', printWidth: 120 }],
+        'prettier/prettier': ['error', { endOfLine: 'auto', printWidth: 100 }],
         // [error] Function component is not a function declaration
         'react/function-component-definition': [2, { namedComponents: ['arrow-function', 'function-declaration'] }],
         'react/react-in-jsx-scope': 0,
@@ -78,6 +72,9 @@ module.exports = {
         '@typescript-eslint/explicit-module-boundary-types': 'error',
     },
     settings: {
+        react: {
+            version: 'detect', // React 버전을 자동으로 감지
+        },
         'import/resolver': {
             node: {
                 extensions: ['.js', '.jsx', '.ts', '.tsx'],
@@ -85,42 +82,3 @@ module.exports = {
         },
     },
 };
-// // eslint-disable-next-line no-undef
-// module.exports = {
-//     env: {
-//         browser: true,
-//         es2021: true,
-//     },
-//     extends: [
-//         'eslint:recommended',
-//         'plugin:react/recommended',
-//         'plugin:@typescript-eslint/recommended',
-//         'plugin:prettier/recommended',
-//     ],
-//     parser: '@typescript-eslint/parser',
-//     parserOptions: {
-//         ecmaFeatures: {
-//             jsx: true,
-//         },
-//         ecmaVersion: 12,
-//         sourceType: 'module',
-//     },
-//     plugins: ['react', '@typescript-eslint', 'prettier'],
-//     rules: {
-//         'prettier/prettier': 'error',
-//         '@typescript-eslint/explicit-function-return-type': [
-//             'error',
-//             {
-//                 allowExpressions: false,
-//                 allowTypedFunctionExpressions: true,
-//             },
-//         ],
-//         '@typescript-eslint/explicit-module-boundary-types': 'error',
-//         '@typescript-eslint/no-inferrable-types': 'warn', // 명시적 타입이 없는 경우 경고
-//     },
-//     settings: {
-//         react: {
-//             version: 'detect',
-//         },
-//     },
-// };

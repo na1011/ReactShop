@@ -21,7 +21,7 @@ public class CartController {
 
     private final ItemRepository itemRepository;
 
-    public Map<Long, CartVO> store = new HashMap<>();
+    public Map<Long, CartListVO> store = new HashMap<>();
     public long seq = 0L;
 
     @PostMapping("/api/{itemId}/addCart")
@@ -31,20 +31,20 @@ public class CartController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Item not found");
         }
 
-        CartVO cart = store.computeIfAbsent(seq, k -> createCart(k));
+        CartListVO cart = store.computeIfAbsent(seq, k -> createCart(k));
 
         cart.addItem(item.get());
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok("장바구니에 정상적으로 추가되었습니다.");
     }
 
     @GetMapping("/getCartList")
     public ResponseEntity<?> getCartList() {
-        CartVO cart = store.computeIfAbsent(seq, k -> createCart(k));
-        return ResponseEntity.ok(cart.getCartList());
+        CartListVO cartList = store.computeIfAbsent(seq, k -> createCart(k));
+        return ResponseEntity.ok(cartList);
     }
 
-    public CartVO createCart(Long id) {
-        return CartVO.builder()
+    public CartListVO createCart(Long id) {
+        return CartListVO.builder()
                 .id(id)
                 .cartList(new ArrayList<>())
                 .build();

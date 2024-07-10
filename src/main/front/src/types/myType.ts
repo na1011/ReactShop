@@ -6,9 +6,14 @@ export interface Item {
     price: number;
 }
 
-export interface CartList {
+export interface CartItem {
     quantity: number;
     item: Item;
+}
+
+export interface CartList {
+    user: number;
+    cartList: CartItem[];
 }
 
 // 출석부 시스템에 쓰이는 타입
@@ -23,7 +28,9 @@ export interface StudentInfo {
     students: Student[];
 }
 
-export type StudentAction = { type: 'ADD-STUDENT'; payload: string } | { type: 'REMOVE-STUDENT'; payload: number };
+export type StudentAction =
+    | { type: 'ADD-STUDENT'; payload: string }
+    | { type: 'REMOVE-STUDENT'; payload: number };
 
 export interface StudentListProps {
     list: Student[];

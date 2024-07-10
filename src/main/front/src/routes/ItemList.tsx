@@ -3,8 +3,13 @@ import { Link } from 'react-router-dom';
 import '../assets/styles/ItemList.module.css';
 import axios from 'axios';
 import { Item } from '../types/myType';
+import { useRecoilState } from 'recoil';
+import { tempItemList } from '../atoms/cartState';
 
 const ItemList: React.FC = () => {
+    // Recoil 에서 전역 상태로 관리되는 tempItems 을 불러옴
+    const [tempItems] = useRecoilState<Item[]>(tempItemList);
+
     const [itemList, setItemList] = useState<Item[]>([]);
     const [itemError, setItemError] = useState<string | null>(null);
 
@@ -20,34 +25,9 @@ const ItemList: React.FC = () => {
                 // 200~299 범위일 떄만 then 이 실행되고 그 외엔 catch
                 setItemError(error.message);
                 console.error('Error fetching items:', error);
-
-                // 스프링부트가 켜지지 않았을 때 삽입할 임시 데이터 설정
-                const tempItems: Item[] = [
-                    {
-                        id: 1,
-                        title: 'Temp Item 1',
-                        content: 'Description 1',
-                        img: 'shoes1',
-                        price: 1000,
-                    },
-                    {
-                        id: 2,
-                        title: 'Temp Item 2',
-                        content: 'Description 2',
-                        img: 'shoes2',
-                        price: 1000,
-                    },
-                    {
-                        id: 3,
-                        title: 'Temp Item 3',
-                        content: 'Description 3',
-                        img: 'shoes3',
-                        price: 1000,
-                    },
-                ];
                 setItemList(tempItems);
             });
-        return () => {
+        return (): void => {
             console.log('axios 클리어 함수 실행');
             cancelTokenSource.cancel();
         };
@@ -68,7 +48,11 @@ const ItemList: React.FC = () => {
                 {Object.values(itemList).map((item) => (
                     <div className={'col-md-4'} key={item.id}>
                         <Link to={`/detail/${item.id}`}>
-                            <img src={`https://codingapple1.github.io/shop/${item.img}.jpg`} width={'80%'} alt={''} />
+                            <img
+                                src={`https://codingapple1.github.io/shop/${item.img}.jpg`}
+                                width={'80%'}
+                                alt={''}
+                            />
                             <h4 className={'itemTitle'}>{item.title}</h4>
                             <p>{item.content}</p>
                             <p>{item.price}</p>

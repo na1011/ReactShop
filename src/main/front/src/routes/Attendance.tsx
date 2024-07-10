@@ -35,7 +35,7 @@ const Attendance: React.FC = () => {
         students: [],
     };
 
-    const inputRef = useRef<HTMLInputElement>(null);
+    const inputRef = useRef<HTMLInputElement | null>(null);
     const [info, dispatch] = useReducer(myReducer, initialState);
 
     const addStudent = (): void => {

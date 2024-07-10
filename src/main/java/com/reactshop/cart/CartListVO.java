@@ -8,7 +8,7 @@ import java.util.List;
 
 @Getter
 @Builder
-public class CartVO {
+public class CartListVO {
     private long id;
     private List<CartItemVO> cartList;
 

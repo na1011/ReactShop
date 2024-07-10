@@ -15,7 +15,10 @@ const ItemDetailTab: React.FC = () => {
             <Nav variant={'tabs'} defaultActiveKey={'link0'}>
                 {navData.navList.map((menu) => (
                     <Nav.Item key={menu.id}>
-                        <Nav.Link eventKey={`link${menu.id}`} onClick={(): void => switchTab(menu.id)}>
+                        <Nav.Link
+                            eventKey={`link${menu.id}`}
+                            onClick={(): void => switchTab(menu.id)}
+                        >
                             {menu.name}
                         </Nav.Link>
                     </Nav.Item>

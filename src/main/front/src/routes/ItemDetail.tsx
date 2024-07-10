@@ -4,13 +4,18 @@ import axios from 'axios';
 import ItemDetailTab from '../components/ItemDetailTab';
 import OrderAlert from '../components/OrderAlert';
 import { Item } from '../types/myType';
+import { useRecoilState } from 'recoil';
+import { tempItemList } from '../atoms/cartState';
 
 const ItemDetail: React.FC = () => {
     console.log('ItemDetail 컴포넌트 렌더링');
 
-    const { itemId } = useParams();
+    const { itemId } = useParams<string>();
     const [item, setItem] = useState<Item | null>(null);
     const [error, setError] = useState<string | null>(null);
+
+    // 스프링부트 미실행 시 recoil 에 있는 전역상태 호출
+    const [tempItem] = useRecoilState<Item[]>(tempItemList);
 
     useEffect(() => {
         const cancelTokenSource = axios.CancelToken.source();
@@ -21,18 +26,15 @@ const ItemDetail: React.FC = () => {
                 setItem(response.data);
             })
             .catch((responseError) => {
-                // 스프링부트가 켜지지 않았을 때 삽입할 임시 데이터 설정
-                const tempItem: Item = {
-                    id: 1,
-                    title: 'Temp Item 1',
-                    content: 'Description 1',
-                    img: 'shoes1',
-                    price: 1000,
-                };
-                setItem(tempItem);
+                if (typeof itemId === 'string') {
+                    const itemIndex: number = parseInt(itemId, 10) - 1;
+                    itemIndex < 0 || itemIndex > 2
+                        ? setItem(tempItem[0])
+                        : setItem(tempItem[itemIndex]);
+                }
                 setError(responseError.message);
             });
-        return () => {
+        return (): void => {
             console.log('axios 클리어 함수 실행');
             cancelTokenSource.cancel();
         };
@@ -42,14 +44,16 @@ const ItemDetail: React.FC = () => {
         return axios
             .post(`/api/${itemId}/addCart`)
             .then((response) => {
-                alert('장바구니에 정상적으로 추가되었습니다.');
+                alert(response.data);
             })
             .catch((responseError) => {
                 alert(responseError.message);
+                if (!item) return;
+
             });
     };
 
-    if (error && item == null) {
+    if (error && item === null) {
         return (
             <div>
                 {'Error : '}
@@ -67,7 +71,11 @@ const ItemDetail: React.FC = () => {
             <OrderAlert />
             <form className={'row'}>
                 <div className={'col-md-6'}>
-                    <img src={`https://codingapple1.github.io/shop/${item.img}.jpg`} width={'100%'} alt={''} />
+                    <img
+                        src={`https://codingapple1.github.io/shop/${item.img}.jpg`}
+                        width={'100%'}
+                        alt={''}
+                    />
                 </div>
                 <div className={'col-md-6'}>
                     <h4 className={'pt-5'}>{item.title}</h4>
