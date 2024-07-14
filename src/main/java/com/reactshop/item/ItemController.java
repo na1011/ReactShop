@@ -16,12 +16,12 @@ public class ItemController {
 
     private final ItemRepository itemRepository;
 
-    @GetMapping("/items")
+    @GetMapping("/api/items")
     public ResponseEntity<Map<Long, ItemVO>> getItems() {
         return new ResponseEntity<>(itemRepository.getStore(), HttpStatus.OK);
     }
 
-    @GetMapping("/details/{itemId}")
+    @GetMapping("/api/details/{itemId}")
     public ResponseEntity<?> itemDetail(@PathVariable("itemId") Long itemID) {
         Optional<ItemVO> item = itemRepository.findById(itemID);
         if (item.isEmpty()) {
@@ -31,7 +31,7 @@ public class ItemController {
         return new ResponseEntity<>(item, HttpStatus.OK);
     }
 
-    @PostMapping("/detail/{itemId}/order")
+    @PostMapping("/api/detail/{itemId}/order")
     public ResponseEntity<?> itemOrder(@PathVariable("itemId") Long itemId,
                                        @Validated @RequestBody ItemVO item,
                                        BindingResult bindingResult) {

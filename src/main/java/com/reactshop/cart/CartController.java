@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-@RestController
+@RestController("/api")
 @RequiredArgsConstructor
 public class CartController {
 
@@ -24,7 +24,7 @@ public class CartController {
     public Map<Long, CartListVO> store = new HashMap<>();
     public long seq = 0L;
 
-    @PostMapping("/api/{itemId}/addCart")
+    @PostMapping("/{itemId}/addCart")
     public ResponseEntity<?> addCart(@PathVariable("itemId") long itemId) {
         Optional<ItemVO> item = itemRepository.findById(itemId);
         if (item.isEmpty()) {

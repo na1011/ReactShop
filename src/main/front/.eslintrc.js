@@ -22,6 +22,8 @@ module.exports = {
         'no-var': 'warn',
         // 일치 연산자 사용 필수
         'eqeqeq': 'warn',
+        // any 타입 사용 금지 해제
+        '@typescript-eslint/no-explicit-any' : ['OFF'],
         // 컴포넌트의 props 검사 비활성화, propstype 사용하지 않아도 경고 띄우지 않음
         'react/prop-types': 0,
         // 불필요한 세미콜론 사용 시 에러 표시
@@ -32,6 +34,7 @@ module.exports = {
         // 'arrow-parens': ['warn', 'as-needed'],
         // 사용하지 않는 변수가 있을 때 발생하는 경고 비활성화
         'no-unused-vars': ['off'],
+        '@typescript-eslint/no-unused-vars': ['warn'],
         // 콘솔 사용 시 발생하는 경고 비활성화
         'no-console': ['off'],
         // export문이 하나일 때 default export 사용 권장 경고 비활성화
@@ -69,7 +72,7 @@ module.exports = {
             'error',
             { allowExpressions: false, allowTypedFunctionExpressions: true },
         ],
-        '@typescript-eslint/explicit-module-boundary-types': 'error',
+        // '@typescript-eslint/explicit-module-boundary-types': 'error',
     },
     settings: {
         react: {

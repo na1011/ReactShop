@@ -39,7 +39,7 @@ tasks.named('test') {
 // buildReact Task: npm install과 npm run build 명령을 실행하여 리액트 프로젝트를 빌드해.
 tasks.register('buildReact', Exec) {
     workingDir 'src/main/front'
-    commandLine 'cmd', '/c', 'npm install && npm run build'
+    commandLine 'cmd', '/c', 'C:\\Users\\zerus\\AppData\\Roaming\\npm\\pnpm', 'install', '&&', 'C:\\Users\\zerus\\AppData\\Roaming\\npm\\pnpm', 'run', 'build'
 
     doLast {
         println '리액트 빌드 완료'

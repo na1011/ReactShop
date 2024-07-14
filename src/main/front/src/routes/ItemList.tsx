@@ -1,43 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../assets/styles/ItemList.module.css';
-import axios from 'axios';
 import { Item } from '../types/myType';
 import { useRecoilState } from 'recoil';
 import { tempItemList } from '../atoms/cartState';
+import useFetchData from '../hooks/useFetchData';
 
 const ItemList: React.FC = () => {
+    const [itemList, setItemList] = useState<Item[]>([]);
+    const { fetchData, fetchError } = useFetchData<Item[]>('/items', []);
+
     // Recoil 에서 전역 상태로 관리되는 tempItems 을 불러옴
     const [tempItems] = useRecoilState<Item[]>(tempItemList);
 
-    const [itemList, setItemList] = useState<Item[]>([]);
-    const [itemError, setItemError] = useState<string | null>(null);
-
     useEffect(() => {
-        const cancelTokenSource = axios.CancelToken.source();
+        if (fetchData !== null && fetchData.length !== 0) {
+            setItemList(fetchData);
+        } else {
+            setItemList(tempItems);
+        }
+    }, [fetchData]);
 
-        axios
-            .get('/items')
-            .then((response) => {
-                setItemList(response.data); // Axios 는 응답 데이터를 response.data 에 저장
-            })
-            .catch((error) => {
-                // 200~299 범위일 떄만 then 이 실행되고 그 외엔 catch
-                setItemError(error.message);
-                console.error('Error fetching items:', error);
-                setItemList(tempItems);
-            });
-        return (): void => {
-            console.log('axios 클리어 함수 실행');
-            cancelTokenSource.cancel();
-        };
-    }, []);
-
-    if (itemError && itemList.length === 0) {
+    if (fetchError && itemList.length === 0) {
         return (
             <div>
                 {'Error : '}
-                {itemError}
+                {fetchError}
             </div>
         );
     }

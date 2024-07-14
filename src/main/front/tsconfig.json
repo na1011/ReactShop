@@ -20,5 +20,6 @@
     "rootDir": "./src",                     // 루트 디렉토리를 설정합니다.
     "typeRoots": ["node_modules/@types", "src/types"],// 타입 정의 파일을 검색할 디렉토리 경로를 설정합니다.
   },
-  "include": ["src", "src/custom.d.ts", ".eslintrc.js"] // 컴파일 대상 파일을 포함합니다.
+  "include": ["src/**/*", ".eslintrc.js"], // 컴파일 대상 파일을 포함합니다.
+  "exclude": ["node_modules"]
 }

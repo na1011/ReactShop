@@ -6,14 +6,14 @@ export interface Item {
     price: number;
 }
 
-export interface CartItem {
-    quantity: number;
-    item: Item;
-}
-
 export interface CartList {
     user: number;
     cartList: CartItem[];
+}
+
+export interface CartItem {
+    quantity: number;
+    item: Item;
 }
 
 // 출석부 시스템에 쓰이는 타입

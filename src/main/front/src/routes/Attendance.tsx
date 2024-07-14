@@ -13,17 +13,17 @@ const Attendance: React.FC = () => {
                 const newStudent: Student = {
                     id: Date.now(),
                     name: action.payload,
-                    isHere: false,
+                    isHere: false
                 };
                 return {
                     count: info.count + 1,
-                    students: [...info.students, newStudent],
+                    students: [...info.students, newStudent]
                 };
             }
             case 'REMOVE-STUDENT':
                 return {
                     count: info.count - 1,
-                    students: info.students.filter((student) => student.id !== action.payload),
+                    students: info.students.filter((student) => student.id !== action.payload)
                 };
             default:
                 return info;
@@ -32,7 +32,7 @@ const Attendance: React.FC = () => {
 
     const initialState: StudentInfo = {
         count: 0,
-        students: [],
+        students: []
     };
 
     const inputRef = useRef<HTMLInputElement | null>(null);
@@ -45,7 +45,7 @@ const Attendance: React.FC = () => {
             const { value } = current;
             dispatch({
                 type: 'ADD-STUDENT',
-                payload: value,
+                payload: value
             });
             current.value = '';
             current.focus();
@@ -55,7 +55,7 @@ const Attendance: React.FC = () => {
     const removeStudent = (id: number): void => {
         dispatch({
             type: 'REMOVE-STUDENT',
-            payload: id,
+            payload: id
         });
     };
 

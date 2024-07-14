@@ -25,7 +25,7 @@ const CartTable: React.FC = () => {
                 setUser(tempCart.user);
                 setCartList(tempCart.cartList);
             });
-    }, []);
+    }, [cartList]);
 
     if (!cartList) {
         return <div>{'Loading...'}</div>;

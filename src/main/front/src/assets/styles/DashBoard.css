@@ -1,0 +1,475 @@
+.dashboard,
+.dashboard * {
+    box-sizing: border-box;
+}
+.dashboard {
+    background: linear-gradient(
+            89.81deg,
+            rgba(0, 152, 185, 1) 0%,
+            rgba(0, 56, 68, 1) 100%
+    );
+    height: 1080px;
+    position: relative;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25),
+    0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+}
+.logo {
+    position: absolute;
+    inset: 0;
+}
+.heartbeat-1 {
+    width: 148px;
+    height: 148px;
+    position: absolute;
+    left: 53px;
+    top: 36px;
+    overflow: hidden;
+}
+.group {
+    height: auto;
+    position: absolute;
+    left: 1.48px;
+    top: 10.86px;
+    overflow: visible;
+}
+.your {
+    color: #ffffff;
+    text-align: left;
+    font-family: "Roboto-Regular", sans-serif;
+    font-size: 26px;
+    font-weight: 400;
+    position: absolute;
+    right: 50%;
+    left: 14.19%;
+    width: 35.81%;
+    bottom: 58.11%;
+    top: 21.62%;
+    height: 20.27%;
+}
+.health-care {
+    color: #ffffff;
+    text-align: left;
+    font-family: "Roboto-Regular", sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    position: absolute;
+    right: 87.34%;
+    left: 8.54%;
+    width: 4.11%;
+    bottom: 89.81%;
+    top: 8.52%;
+    height: 1.67%;
+}
+.dash-contents {
+    width: 1492px;
+    height: 855px;
+    position: absolute;
+    left: 370px;
+    top: 171px;
+    overflow: visible;
+}
+.available-doctors {
+    position: absolute;
+    inset: 0;
+}
+.rectangle-4 {
+    background: #ffffff;
+    border-radius: 13px;
+    width: 357px;
+    height: 246px;
+    position: absolute;
+    left: 580px;
+    top: 244px;
+    box-shadow: -1px 4px 15px 0px rgba(0, 0, 0, 0.25);
+}
+._22 {
+    color: #00738c;
+    text-align: right;
+    font-family: "Sansation-Bold", sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    position: absolute;
+    left: 863px;
+    top: 377px;
+}
+.available-doctors2 {
+    color: #00738c;
+    text-align: left;
+    font-family: "Sansation-Regular", sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    position: absolute;
+    left: 610px;
+    top: 260px;
+}
+.stethoscope-1 {
+    width: 126px;
+    height: 126px;
+    position: absolute;
+    left: 610px;
+    top: 325px;
+    overflow: hidden;
+}
+.group2 {
+    height: auto;
+    position: absolute;
+    left: 2.76px;
+    top: 1.26px;
+    overflow: visible;
+}
+.total {
+    color: #00738c;
+    text-align: left;
+    font-family: "Sansation-Regular", sans-serif;
+    font-size: 29px;
+    font-weight: 400;
+    position: absolute;
+    left: 843px;
+    top: 316px;
+}
+.available-nurses {
+    position: absolute;
+    inset: 0;
+}
+.rectangle-42 {
+    background: #ffffff;
+    border-radius: 13px;
+    width: 357px;
+    height: 246px;
+    position: absolute;
+    left: 970px;
+    top: 245px;
+    box-shadow: -1px 4px 15px 0px rgba(0, 0, 0, 0.25);
+}
+._107 {
+    color: #00738c;
+    text-align: right;
+    font-family: "Sansation-Bold", sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    position: absolute;
+    left: 1232px;
+    top: 378px;
+}
+.available-nurses2 {
+    color: #00738c;
+    text-align: left;
+    font-family: "Sansation-Regular", sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    position: absolute;
+    left: 1000px;
+    top: 261px;
+}
+.total2 {
+    color: #00738c;
+    text-align: left;
+    font-family: "Sansation-Regular", sans-serif;
+    font-size: 29px;
+    font-weight: 400;
+    position: absolute;
+    left: 1230px;
+    top: 317px;
+}
+.nurse-1 {
+    width: 6.56%;
+    height: 11.67%;
+    position: absolute;
+    right: 41.51%;
+    left: 51.93%;
+    bottom: 58.43%;
+    top: 29.91%;
+    overflow: hidden;
+}
+.group3 {
+    height: auto;
+    position: absolute;
+    left: 17.86px;
+    top: 1.26px;
+    overflow: visible;
+}
+.indoor-patients {
+    position: absolute;
+    inset: 0;
+}
+.rectangle-43 {
+    background: #ffffff;
+    border-radius: 13px;
+    width: 357px;
+    height: 246px;
+    position: absolute;
+    left: 1360px;
+    top: 244px;
+    box-shadow: -1px 4px 15px 0px rgba(0, 0, 0, 0.25);
+}
+._3-075 {
+    color: #00738c;
+    text-align: right;
+    font-family: "Sansation-Bold", sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    position: absolute;
+    left: 1592px;
+    top: 377px;
+}
+.indoor-patients2 {
+    color: #00738c;
+    text-align: left;
+    font-family: "Sansation-Regular", sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    position: absolute;
+    left: 1390px;
+    top: 260px;
+}
+.total3 {
+    color: #00738c;
+    text-align: left;
+    font-family: "Sansation-Regular", sans-serif;
+    font-size: 29px;
+    font-weight: 400;
+    position: absolute;
+    left: 1624px;
+    top: 316px;
+}
+.personnel-1 {
+    width: 6.56%;
+    height: 11.67%;
+    position: absolute;
+    right: 21.04%;
+    left: 72.4%;
+    bottom: 58.33%;
+    top: 30%;
+    overflow: hidden;
+}
+.group4 {
+    height: auto;
+    position: absolute;
+    left: 14.41px;
+    top: 1.26px;
+    overflow: visible;
+}
+.outdoor-patients {
+    position: absolute;
+    inset: 0;
+}
+.rectangle-44 {
+    background: #ffffff;
+    border-radius: 13px;
+    width: 357px;
+    height: 246px;
+    position: absolute;
+    left: 580px;
+    top: 519px;
+    box-shadow: -1px 4px 15px 0px rgba(0, 0, 0, 0.25);
+}
+._10-325 {
+    color: #00738c;
+    text-align: right;
+    font-family: "Sansation-Bold", sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    position: absolute;
+    left: 798px;
+    top: 652px;
+}
+.outdoor-patients2 {
+    color: #00738c;
+    text-align: left;
+    font-family: "Sansation-Regular", sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    position: absolute;
+    left: 610px;
+    top: 535px;
+}
+.total4 {
+    color: #00738c;
+    text-align: left;
+    font-family: "Sansation-Regular", sans-serif;
+    font-size: 29px;
+    font-weight: 400;
+    position: absolute;
+    left: 844px;
+    top: 591px;
+}
+.personnel-12 {
+    width: 6.56%;
+    height: 11.67%;
+    position: absolute;
+    right: 61.67%;
+    left: 31.77%;
+    bottom: 32.87%;
+    top: 55.46%;
+    overflow: hidden;
+}
+.group5 {
+    height: auto;
+    position: absolute;
+    left: 14.41px;
+    top: 1.26px;
+    overflow: visible;
+}
+.cardiogram-graph-1 {
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    left: 387px;
+    top: 291px;
+    overflow: hidden;
+}
+.group6 {
+    height: auto;
+    position: absolute;
+    left: 0.7px;
+    top: 9.43px;
+    overflow: visible;
+}
+.group-16 {
+    width: 1.43%;
+    height: 2.78%;
+    position: absolute;
+    right: 3.45%;
+    left: 95.12%;
+    bottom: 93.43%;
+    top: 3.8%;
+    overflow: visible;
+}
+.nav-bar {
+    position: absolute;
+    inset: 0;
+}
+.group-33 {
+    width: 248px;
+    height: 50px;
+    position: static;
+}
+.rectangle-6 {
+    background: #ffffff;
+    border-radius: 0px 50px 50px 0px;
+    border-style: solid;
+    border-color: #ffb800;
+    border-width: 2px;
+    width: 248px;
+    height: 50px;
+    position: absolute;
+    left: -5px;
+    top: 282px;
+    box-shadow: 5px 2px 9px 0px rgba(0, 0, 0, 0.25);
+}
+.home {
+    color: #ffb800;
+    text-align: left;
+    font-family: "RoundedMplus1CBold-Bold", sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    position: absolute;
+    left: 20px;
+    top: 294px;
+    width: 162.38px;
+}
+.group-34 {
+    width: 248px;
+    height: 50px;
+    position: static;
+}
+.rectangle-3 {
+    background: #ffffff;
+    border-radius: 0px 50px 50px 0px;
+    width: 248px;
+    height: 50px;
+    position: absolute;
+    left: -5px;
+    top: 418px;
+    box-shadow: 5px 2px 9px 0px rgba(0, 0, 0, 0.25);
+}
+.nurses {
+    color: #006b82;
+    text-align: left;
+    font-family: "RoundedMplus1CBold-Bold", sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    position: absolute;
+    left: 20px;
+    top: 430px;
+    width: 126px;
+}
+.group-35 {
+    width: 297.21px;
+    height: 50px;
+    position: static;
+}
+.rectangle-32 {
+    background: #ffffff;
+    border-radius: 0px 50px 50px 0px;
+    width: 248px;
+    height: 50px;
+    position: absolute;
+    left: -5px;
+    top: 486px;
+    box-shadow: 5px 2px 9px 0px rgba(0, 0, 0, 0.25);
+}
+.indoor-patients3 {
+    color: #0187a5;
+    text-align: left;
+    font-family: "RoundedMplus1CBold-Bold", sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    position: absolute;
+    left: 20.21px;
+    top: 498px;
+    width: 272px;
+}
+.group-36 {
+    width: 292px;
+    height: 50px;
+    position: static;
+}
+.rectangle-33 {
+    background: #ffffff;
+    border-radius: 0px 50px 50px 0px;
+    width: 248px;
+    height: 50px;
+    position: absolute;
+    left: -5px;
+    top: 554px;
+    box-shadow: 5px 2px 9px 0px rgba(0, 0, 0, 0.25);
+}
+.out-door-patients {
+    color: #006b82;
+    text-align: left;
+    font-family: "RoundedMplus1CBold-Bold", sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    position: absolute;
+    left: 20px;
+    top: 566px;
+    width: 267px;
+}
+.group-38 {
+    width: 248px;
+    height: 50px;
+    position: static;
+}
+.rectangle-34 {
+    background: #ffffff;
+    border-radius: 0px 50px 50px 0px;
+    width: 248px;
+    height: 50px;
+    position: absolute;
+    left: -5px;
+    top: 350px;
+    box-shadow: 5px 2px 9px 0px rgba(0, 0, 0, 0.25);
+}
+.doctors {
+    color: #006b82;
+    text-align: left;
+    font-family: "RoundedMplus1CBold-Bold", sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    position: absolute;
+    left: 20px;
+    top: 362px;
+    width: 111.63px;
+}
