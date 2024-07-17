@@ -51,7 +51,7 @@ const ItemDetail: React.FC = () => {
 
     const addCart = async (): Promise<void> => {
         resetState();
-        await postApi(`/api/${itemId}/addCart`);
+        await postApi(`${itemId}/addCart`);
     };
 
     if (fetchError && item === null) {

@@ -1,7 +1,11 @@
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
+import { isLoginSelector } from '../atoms/LoginAtom';
 
 const NavMenu: React.FC = () => {
+    const isLogin: boolean = useRecoilValue(isLoginSelector);
+
     return (
         <Navbar bg={'dark'} variant={'dark'}>
             <Container>
@@ -18,6 +22,15 @@ const NavMenu: React.FC = () => {
                     <Nav.Link as={Link} to={'/attendance'}>
                         {'Attendance'}
                     </Nav.Link>
+                    {isLogin ? (
+                        <Nav.Link as={Link} to={'/logout'}>
+                            {'Logout'}
+                        </Nav.Link>
+                    ) : (
+                        <Nav.Link as={Link} to={'/login'}>
+                            {'Login'}
+                        </Nav.Link>
+                    )}
                 </Nav>
             </Container>
         </Navbar>

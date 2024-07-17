@@ -1,4 +1,9 @@
 module.exports = {
+    env: {
+        browser: true,
+        es2021: true,
+        node: true
+    },
     // [parser] typescript 를 parser 로 사용하도록 함
     parser: '@typescript-eslint/parser',
     // [plugins] 사용할 eslint 플러그인 설정
@@ -84,4 +89,8 @@ module.exports = {
             },
         },
     },
+    globals: {
+        process: 'readonly',
+        NODE_ENV: 'readonly'
+    }
 };

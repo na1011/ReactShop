@@ -10,9 +10,10 @@ interface FetchData<T> {
 const useFetchData = <T>(url: string, defaultValue: T): FetchData<T> => {
     const [fetchData, setFetchData] = useState(defaultValue);
     const [fetchError, setFetchError] = useState<string | null>(null);
-    const cancelTokenSource = axios.CancelToken.source();
 
     useEffect(() => {
+        const cancelTokenSource = axios.CancelToken.source();
+
         const fetchApi = async (): Promise<void> => {
             try {
                 const response = await axiosInstance.get<T>(url, {
@@ -21,7 +22,7 @@ const useFetchData = <T>(url: string, defaultValue: T): FetchData<T> => {
                 setFetchData(response.data);
             } catch (error: any) {
                 if (axios.isCancel(error)) {
-                    console.log('Request canceled', error.message);
+                    console.log('Request canceled', error);
                 } else {
                     setFetchError(error.response ? error.response.data : '알 수 없는 오류입니다.');
                     console.error('Error fetching data:', error);

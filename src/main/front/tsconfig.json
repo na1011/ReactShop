@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "es5",                        // 컴파일된 JavaScript의 버전을 설정합니다. ES5는 대부분의 브라우저에서 지원됩니다.
     "lib": ["dom", "dom.iterable", "esnext"], // 사용할 라이브러리의 타입 정의를 설정합니다. 여기서는 DOM API와 ESNext 기능을 포함합니다.
+    "types": ["node"],
     "allowJs": true,                        // JavaScript 파일도 TypeScript 컴파일러가 처리하도록 허용합니다.
     "skipLibCheck": true,                   // 타입 정의 파일의 검사를 건너뜁니다. 컴파일 속도를 높이기 위해 사용됩니다.
     "esModuleInterop": true,                // CommonJS와 ES Modules 간의 호환성을 활성화합니다.
@@ -18,8 +19,9 @@
     "baseUrl": "./src",                     // 모듈을 찾기 위한 기본 경로를 설정합니다.
     "outDir": "./dist",                     // 출력 디렉토리를 설정합니다.
     "rootDir": "./src",                     // 루트 디렉토리를 설정합니다.
-    "typeRoots": ["node_modules/@types", "src/types"],// 타입 정의 파일을 검색할 디렉토리 경로를 설정합니다.
+    "typeRoots": ["node_modules/@types", "src/types"]// 타입 정의 파일을 검색할 디렉토리 경로를 설정합니다.
   },
   "include": ["src/**/*", ".eslintrc.js"], // 컴파일 대상 파일을 포함합니다.
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "dist"],
+  "files": [".env"]
 }

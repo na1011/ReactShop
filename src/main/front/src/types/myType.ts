@@ -36,3 +36,9 @@ export interface StudentListProps {
     list: Student[];
     removeStudent: (id: number) => void;
 }
+
+export interface User {
+    id: string;
+    password: string;
+    role?: string;
+}

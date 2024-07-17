@@ -7,7 +7,7 @@ interface PostRequest<T> {
     postError: string | null;
     postIsLoading: boolean;
     resetState: () => void;
-    postApi: (id: string, body?: any) => Promise<void>;
+    postApi: (url: string, body?: any) => Promise<void>;
 }
 
 const usePostRequest = <T>(defaultValue: T | null): PostRequest<T> => {
@@ -26,7 +26,7 @@ const usePostRequest = <T>(defaultValue: T | null): PostRequest<T> => {
         const cancelTokenSource = axios.CancelToken.source();
 
         try {
-            const response = await axiosInstance.post(url, {
+            const response = await axiosInstance.post(url, body, {
                 cancelToken: cancelTokenSource.token
             });
             setPostData(response.data);
@@ -34,7 +34,7 @@ const usePostRequest = <T>(defaultValue: T | null): PostRequest<T> => {
             if (axios.isCancel(error)) {
                 console.log('Request canceled', error.message);
             } else {
-                setPostError(error.response ? error.response.data : '알 수 없는 오류입니다.');
+                setPostError(error.message ? error.message : '알 수 없는 오류입니다.');
                 console.error('Error fetching data:', error);
             }
         } finally {
